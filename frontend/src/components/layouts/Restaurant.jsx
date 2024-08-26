@@ -1,21 +1,33 @@
-import React from 'react'
+import React from "react";
+import {Link} from "react-router-dom";
 
-const Restaurant = () => {
+export default function Restaurant({ restaurant }) {
   return (
-    <div className='col-sm-12 col-md-6 col-lg-3 my-3'>
-        <div className='card p-3 rounded'>
-            <img src='https://b.zmtcdn.com/data/pictures/chains/3/1600033/93776f3249312397e2c2ba274b4812ec.jpg?fit=around|750:500&crop=750:500;*,*' alt='kfc'></img>
-            <div className="card-body d-flex flex-column">
-                <h5 className='card-title'>KFC Chicken Lollipop</h5>
-                <p className='rest_address'>1123 street, Dubai , India</p>
-                <div className='rating-outer'>
-                    <div className='rating-inner'></div>
-                    <span id="no_of_reviews">(140 reviews)</span>
-                </div>
-            </div>
-        </div>
-    </div>
-  )
-}
+    <div className="col-sm-12 col-md-6 col-lg-3 my-3">
+      <div className="card p-3 rounded">
+        <Link to = {`/eats/stores/${restaurant._id}/menus`} className="btn btn-block">
+        <img
+          src={restaurant.images[0].url}
+          alt={restaurant.name}
+          className="card-img-top mx-auto"
+        />
+        </Link>
+        {/* heading and address */}
+        <div className="card-body d-flex flex-column">
+          <h5 className="card-tittle">{restaurant.name}</h5>
+          <p className="rest_address">{restaurant.address}</p>
+          {/* reviews and rating */}
+          <div className="ratings my-auto">
+            <div className="rating-outer">
+              <div className="rating-inner"
+                style={{ width: `${(restaurant.ratings/5) * 100} % ` }}></div>
 
-export default Restaurant
+            </div>
+
+            <span id="no_of_reviews">({restaurant.numOfReviews} reviews)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

@@ -65,11 +65,11 @@ nav {
 }
 
 #login_btn {
-
   padding: 1.5rem 1.8rem;
   font-family: calibri;
   font-size: 2rem;
   margin-top: -3%;
+
   color: white;
 }
 #login_btn:hover {
